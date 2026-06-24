@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ডেটা অ্যানালাইসিস শেখার রোডম্যাপ | Data Science Roadmap</title>
+    <meta name="description" content="বিজ্ঞান প্রযুক্তির তৈরি — শূন্য থেকে এক্সপার্ট পর্যন্ত ডেটা অ্যানালাইসিস শেখার সম্পূর্ণ রোডম্যাপ">
+    <meta name="author" content="বিজ্ঞান প্রযুক্তি">
+    <meta property="og:title" content="ডেটা অ্যানালাইসিস শেখার রোডম্যাপ">
+    <meta property="og:description" content="কাগল, আইবিএম, ম্যাটল্যাব এবং এইচপি লাইফের ফ্রি কোর্সগুলো দিয়ে ডেটা সায়েন্স শেখার সম্পূর্ণ গাইড">
+    <meta property="og:type" content="website">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📊</text></svg>">
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --primary: #1a5f7a;
+            --primary-light: #2d8da8;
+            --primary-dark: #0d3d4d;
+            --accent: #e07b39;
+            --accent-light: #f0a060;
+            --bg: #f0f4f8;
+            --card-bg: #ffffff;
+            --text: #1e293b;
+            --text-light: #64748b;
+            --border: #e2e8f0;
+            --shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -2px rgba(0,0,0,0.1);
+            --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -4px rgba(0,0,0,0.1);
+        }
+        body {
+            font-family: 'Hind Siliguri', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.8;
+            min-height: 100vh;
+        }
+        .header {
+            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 50%, var(--primary-light) 100%);
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%; left: -50%;
+            width: 200%; height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px);
+            background-size: 30px 30px;
+            opacity: 0.3;
+            animation: float 20s linear infinite;
+        }
+        @keyframes float {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(30px, 30px); }
+        }
+        .header-content { position: relative; z-index: 1; max-width: 800px; margin: 0 auto; }
+        .header h1 { font-size: 2.8rem; font-weight: 700; margin-bottom: 10px; text-shadow: 0 2px 10px rgba(0,0,0,0.2); }
+        .header .subtitle { font-size: 1.3rem; opacity: 0.9; font-weight: 300; }
+        .header .author { margin-top: 20px; font-size: 1rem; opacity: 0.8; display: flex; align-items: center; justify-content: center; gap: 8px; }
+        .share-bar {
+            background: rgba(255,255,255,0.15);
+            backdrop-filter: blur(10px);
+            padding: 12px 20px;
+            border-radius: 50px;
+            display: inline-flex;
+            gap: 12px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .share-btn {
+            color: white;
+            text-decoration: none;
+            padding: 8px 16px;
+            border-radius: 25px;
+            background: rgba(255,255,255,0.2);
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            border: 1px solid rgba(255,255,255,0.3);
+            cursor: pointer;
+        }
+        .share-btn:hover { background: rgba(255,255,255,0.35); transform: translateY(-2px); }
+        .progress-container {
+            background: white;
+            padding: 30px 20px;
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .progress-wrapper { max-width: 1000px; margin: 0 auto; }
+        .progress-label { display: flex; justify-content: space-between; margin-bottom: 10px; font-weight: 600; color: var(--text); }
+        .progress-bar-bg { height: 12px; background: var(--border); border-radius: 6px; overflow: hidden; }
+        .progress-bar-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            border-radius: 6px;
+            width: 0%;
+            transition: width 0.5s ease;
+            position: relative;
+        }
+        .progress-bar-fill::after {
+            content: '';
+            position: absolute;
+            right: 0; top: 0; bottom: 0;
+            width: 20px;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4));
+            animation: shimmer 2s infinite;
+        }
+        @keyframes shimmer {
+            0% { transform: translateX(-20px); }
+            100% { transform: translateX(20px); }
+        }
+        .container { max-width: 1000px; margin: 0 auto; padding: 40px 20px; }
+        .step-card {
+            background: var(--card-bg);
+            border-radius: 16px;
+            margin-bottom: 30px;
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid var(--border);
+        }
+        .step-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+        .step-header {
+            padding: 24px 30px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+            border-bottom: 1px solid var(--border);
+            transition: background 0.3s ease;
+        }
+        .step-header:hover { background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%); }
+        .step-number {
+            width: 56px; height: 56px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            flex-shrink: 0;
+            box-shadow: 0 4px 12px rgba(26, 95, 122, 0.3);
+        }
+        .step-number.completed {
+            background: linear-gradient(135deg, #22c55e, #16a34a);
+            box-shadow: 0 4px 12px rgba(34, 197, 94, 0.3);
+        }
+        .step-title-area { flex: 1; }
+        .step-title-area h2 { font-size: 1.4rem; color: var(--text); font-weight: 600; }
+        .step-title-area p { color: var(--text-light); font-size: 0.95rem; margin-top: 4px; }
+        .step-toggle {
+            width: 40px; height: 40px;
+            border-radius: 50%;
+            background: white;
+            border: 2px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            flex-shrink: 0;
+        }
+        .step-toggle:hover { background: var(--primary); color: white; border-color: var(--primary); }
+        .step-toggle.rotated { transform: rotate(180deg); }
+        .step-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease, padding 0.5s ease;
+        }
+        .step-content.open { max-height: 2000px; padding: 24px 30px; }
+        .course-list { display: flex; flex-direction: column; gap: 16px; }
+        .course-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            padding: 18px 20px;
+            background: #f8fafc;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        .course-item:hover { background: #f0f9ff; border-color: var(--primary-light); transform: translateX(4px); }
+        .course-checkbox {
+            width: 24px; height: 24px;
+            border: 2px solid var(--border);
+            border-radius: 6px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            margin-top: 2px;
+            transition: all 0.3s ease;
+            background: white;
+        }
+        .course-checkbox:hover { border-color: var(--primary); }
+        .course-checkbox.checked { background: var(--primary); border-color: var(--primary); color: white; }
+        .course-checkbox.checked + .course-info h3 { text-decoration: line-through; color: var(--text-light); }
+        .course-info { flex: 1; }
+        .course-info h3 { font-size: 1.1rem; color: var(--text); font-weight: 600; margin-bottom: 4px; transition: color 0.3s ease; }
+        .course-info p { font-size: 0.9rem; color: var(--text-light); line-height: 1.6; }
+        .course-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            margin-top: 10px;
+            padding: 8px 16px;
+            background: var(--primary);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        .course-link:hover { background: var(--primary-dark); transform: translateY(-2px); box-shadow: 0 4px 12px rgba(26, 95, 122, 0.3); }
+        .course-link i { font-size: 0.8rem; }
+        .platform-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            margin-bottom: 8px;
+        }
+        .badge-kaggle { background: #20beff20; color: #20beff; }
+        .badge-ibm { background: #054ada20; color: #054ada; }
+        .badge-matlab { background: #e07b3920; color: #e07b39; }
+        .badge-hp { background: #0096d620; color: #0096d6; }
+        .advice-section {
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+            border-radius: 16px;
+            padding: 30px;
+            margin-top: 40px;
+            border: 1px solid #f59e0b30;
+            position: relative;
+            overflow: hidden;
+        }
+        .advice-section::before {
+            content: '💡';
+            position: absolute;
+            top: -10px; right: 20px;
+            font-size: 4rem;
+            opacity: 0.15;
+        }
+        .advice-section h3 { color: #92400e; font-size: 1.3rem; margin-bottom: 12px; display: flex; align-items: center; gap: 10px; }
+        .advice-section p { color: #78350f; font-size: 1rem; line-height: 1.8; }
+        .footer {
+            text-align: center;
+            padding: 40px 20px;
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+        .footer .heart { color: #ef4444; animation: heartbeat 1.5s ease infinite; }
+        @keyframes heartbeat { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.2); } }
+        .celebration {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0,0,0,0.7);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 10000;
+            flex-direction: column;
+            animation: fadeIn 0.5s ease;
+        }
+        .celebration.show { display: flex; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        .celebration-content {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+            max-width: 400px;
+            animation: popIn 0.5s ease;
+        }
+        @keyframes popIn {
+            0% { transform: scale(0.5); opacity: 0; }
+            80% { transform: scale(1.1); }
+            100% { transform: scale(1); opacity: 1; }
+        }
+        .celebration-content h2 { color: var(--primary); font-size: 2rem; margin-bottom: 10px; }
+        .celebration-content p { color: var(--text-light); margin-bottom: 20px; }
+        .celebration-btn {
+            padding: 12px 30px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-family: 'Hind Siliguri', sans-serif;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .celebration-btn:hover { background: var(--primary-dark); transform: translateY(-2px); }
+        .confetti {
+            position: fixed;
+            width: 10px; height: 10px;
+            background: var(--accent);
+            position: absolute;
+            animation: confetti-fall 3s ease-out forwards;
+            z-index: 9999;
+        }
+        @keyframes confetti-fall {
+            0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
+        }
+        @media (max-width: 640px) {
+            .header h1 { font-size: 2rem; }
+            .step-header { padding: 18px 20px; gap: 14px; }
+            .step-number { width: 44px; height: 44px; font-size: 1.2rem; }
+            .step-title-area h2 { font-size: 1.1rem; }
+            .step-content.open { padding: 18px 20px; }
+            .share-bar { padding: 8px 12px; gap: 8px; }
+            .share-btn { padding: 6px 12px; font-size: 0.8rem; }
+        }
+    </style>
+</head>
+<body>
+
+<header class="header">
+    <div class="header-content">
+        <h1><i class="fas fa-chart-line"></i> ডেটা অ্যানালাইসিস শেখার রোডম্যাপ</h1>
+        <p class="subtitle">বিজ্ঞান প্রযুক্তির তৈরি — শূন্য থেকে এক্সপার্ট পর্যন্ত</p>
+        <div class="author">
+            <i class="fas fa-user-graduate"></i>
+            <span>বিজ্ঞান প্রযুক্তি</span>
+        </div>
+        <div class="share-bar">
+            <a href="https://twitter.com/intent/tweet?text=ডেটা%20অ্যানালাইসিস%20শেখার%20সম্পূর্ণ%20রোডম্যাপ%20—%20বিজ্ঞান%20প্রযুক্তি&url=" class="share-btn" target="_blank" onclick="this.href=this.href+encodeURIComponent(window.location.href)">
+                <i class="fab fa-twitter"></i> টুইট
+            </a>
+            <a href="https://www.facebook.com/sharer/sharer.php?u=" class="share-btn" target="_blank" onclick="this.href=this.href+encodeURIComponent(window.location.href)">
+                <i class="fab fa-facebook-f"></i> শেয়ার
+            </a>
+            <a href="https://www.linkedin.com/sharing/share-offsite/?url=" class="share-btn" target="_blank" onclick="this.href=this.href+encodeURIComponent(window.location.href)">
+                <i class="fab fa-linkedin-in"></i> লিংকডইন
+            </a>
+            <button class="share-btn" onclick="copyLink()">
+                <i class="fas fa-link"></i> লিংক কপি
+            </button>
+        </div>
+    </div>
+</header>
+
+<div class="progress-container">
+    <div class="progress-wrapper">
+        <div class="progress-label">
+            <span>আপনার অগ্রগতি</span>
+            <span id="progress-text">0% সম্পন্ন</span>
+        </div>
+        <div class="progress-bar-bg">
+            <div class="progress-bar-fill" id="progress-bar"></div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+
+    <div class="step-card" data-step="1">
+        <div class="step-header" onclick="toggleStep(1)">
+            <div class="step-number" id="step-num-1">১</div>
+            <div class="step-title-area">
+                <h2>কোডিংয়ের একদম বেসিক (Foundation)</h2>
+                <p>ডেটা নিয়ে কাজ করতে প্রোগ্রামিং ল্যাঙ্গুয়েজ এবং SQL জানতে হবে</p>
+            </div>
+            <div class="step-toggle" id="toggle-1"><i class="fas fa-chevron-down"></i></div>
+        </div>
+        <div class="step-content" id="content-1">
+            <div class="course-list">
+                <div class="course-item">
+                    <div class="course-checkbox" onclick="toggleCheck(this, event)"><i class="fas fa-check" style="display:none"></i></div>
+                    <div class="course-info">
+                        <span class="platform-badge badge-kaggle"><i class="fas fa-database"></i> Kaggle</span>
+                        <h3>Python</h3>
+                        <p>পাইথন হলো ডেটা অ্যানালাইসিসের জন্য সবচেয়ে সহজ ও জনপ্রিয় ভাষা। Kaggle-এর ইন্টারঅ্যাক্টিভ কোর্সে শেখা শুরু করুন।</p>
+                        <a href="https://www.kaggle.com/learn/python" target="_blank" class="course-link">কোর্স শুরু করুন <i class="fas fa-external-link-alt"></i></a>
+                    </div>
+                </div>
+                <div class="course-item">
+                    <div class="course-checkbox" onclick="toggleCheck(this, event)"><i class="fas fa-check" style="display:none"></i></div>
+                    <div class="course-info">
+                        <span class="platform-badge badge-kaggle"><i class="fas fa-database"></i> Kaggle</span>
+                        <h3>Intro to SQL</h3>
+                        <p>ডেটাবেজ থেকে প্রয়োজনীয় তথ্য খুঁজে বের করার প্রথম পাঠ। SQL শেখা ডেটা অ্যানালাইসিসের জন্য অত্যন্ত গুরুত্বপূর্ণ।</p>
+                        <a href="https://www.kaggle.com/learn/intro-to-sql" target="_blank" class="course-link">কোর্স শুরু করুন <i class="fas fa-external-link-alt"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="step-card" data-step="2">
+        <div class="step-header" onclick="toggleStep(2)">
+            <div class="step-number" id="step-num-2">২</div>
+            <div class="step-title-area">
+                <h2>ডেটা সাজানো ও গোছানো (Data Cleaning & Visualisation)</h2>
+                <p>রিয়েল লাইফ ডেটা এলোমেলো থাকে — সেগুলো প্রসেস করে ড্যাশবোর্ড তৈরি করুন</p>
+            </div>
+            <div class="step-toggle" id="toggle-2"><i class="fas fa-chevron-down"></i></div>
+        </div>
+        <div class="step-content" id="content-2">
+            <div class="course-list">
+                <div class="course-item">
+                    <div class="course-checkbox" onclick="toggleCheck(this, event)"><i class="fas fa-check" style="display:none"></i></div>
+                    <div class="course-info">
+                        <span class="platform-badge badge-kaggle"><i class="fas fa-database"></i> Kaggle</span>
+                        <h3>Pandas</h3>
+                        <p>পাইথনে ডেটা নিয়ে খেলা করার সবচেয়ে প্রধান লাইব্রেরি। ডেটা ফ্রেম, ফিল্টারিং, গ্রুপিং সবকিছু শিখুন।</p>
+                        <a href="https://www.kaggle.com/learn/pandas" target="_blank" class="course-link">কোর্স শুরু করুন <i class="fas fa-external-link-alt"></i></a>
+                    </div>
+                </div>
+                <div class="course-item">
+                    <div class="course-checkbox" onclick="toggleCheck(this, event)"><i class="fas fa-check" style="display:none"></i></div>
+                    <div class="course-info">
+                        <span class="platform-badge badge-kaggle"><i class="fas fa-database"></i> Kaggle</span>
+                        <h3>Data Cleaning</h3>
+                        <p>এলোমেলো ডেটা কীভাবে ঠিকঠাক করে কাজের উপযোগী করতে হয় — মিসিং ভ্যালু, আউটলায়ার, ডুপ্লিকেট ডেটা হ্যান্ডলিং।</p>
+                        <a href="https://www.kaggle.com/learn/data-cleaning" target="_blank" class="course-link">কোর্স শুরু করুন <i class="fas fa-external-link-alt"></i></a>
+                    </div>
+                </div>
+                <div class="course-item">
+                    <div class="course-checkbox" onclick="toggleCheck(this, event)"><i class="fas fa-check" style="display:none"></i></div>
+                    <div class="course-info">
+                        <span class="platform-badge badge-kaggle"><i class="fas fa-database"></i> Kaggle</span>
+                        <h3>Data Visualisation</h3>
+                        <p>সংখ্যা বা ডেটাকে চার্ট এবং গ্রাফে রূপান্তর করা। Matplotlib, Seaborn দিয়ে সুন্দর ভিজ্যুয়ালাইজেশন তৈরি।</p>
+                        <a href="https://www.kaggle.com/learn/data-visualization" target="_blank" class="course-link">কোর্স শুরু করুন <i class="fas fa-external-link-alt"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="step-card" data-step="3">
+        <div class="step-header" onclick="toggleStep(3)">
+            <div class="step-number" id="step-num-3">৩</div>
+            <div class="step-title-area">
+                <h2>ডেটা সায়েন্সের তাত্ত্বিক ধারণা (IBM Cognitive Class)</h2>
+                <p>বেসিক কোডিং বুঝে গেলে থিওরি এবং ব্যাকগ্রাউন্ড আইডিয়াগুলো পরিষ্কার করুন</p>
+            </div>
+            <div class="step-toggle" id="toggle-3"><i class="fas fa-chevron-down"></i></div>
+        </div>
+        <div class="step-content" id="content-3">
+            <div class="course-list">
+                <div class="course-item">
+                    <div class="course-checkbox" onclick="toggleCheck(this, event)"><i class="fas fa-check" style="display:none"></i></div>
+                    <div class="course-info">
+                        <span class="platform-badge badge-ibm"><i class="fas fa-brain"></i> IBM Cognitive Class</span>
+                        <h3>Data Science 101</h3>
+                        <p>ডেটা সায়েন্স আসলে কী এবং এটি কীভাবে কাজ করে — বিগিনার-ফ্রেন্ডলি উপায়ে IBM-এর তৈরি।</p>
+                        <a href="https://cognitiveclass.ai/courses/data-science-101" target="_blank" class="course-link">কোর্স শুরু করুন <i class="fas fa-external-link-alt"></i></a>
+                    </div>
+                </div>
+                <div class="course-item">
+                    <div class="course-checkbox" onclick="toggleCheck(this, event)"><i class="fas fa-check" style="display:none"></i></div>
+                    <div class="course-info">
+                        <span class="platform-badge badge-ibm"><i class="fas fa-brain"></i> IBM Cognitive Class</span>
+                        <h3>Python for Data Science</h3>
+                        <p>ডেটা অ্যানালাইসিসের চোখে পাইথনের প্রয়োগ। NumPy, Pandas এবং SciPy-এর ব্যবহার শিখুন।</p>
+                        <a href="https://cognitiveclass.ai/courses/python-for-data-science" target="_blank" class="course-link">কোর্স শুরু করুন <i class="fas fa-external-link-alt"></i></a>
+                    </div>
+                </div>
+                <div class="course-item">
+                    <div class="course-checkbox" onclick="toggleCheck(this, event)"><i class="fas fa-check" style="display:none"></i></div>
+                    <div class="course-info">
+                        <span class="platform-badge badge-ibm"><i class="fas fa-brain"></i> IBM Cognitive Class</span>
+                        <h3>SQL and Relational Databases 101</h3>
+                        <p>ডেটাবেজ ডিজাইনের খুটিনাটি ধারণা — রিলেশনাল ডেটাবেজ, নরমালাইজেশন, ইআর ডায়াগ্রাম।</p>
+                        <a href="https://cognitiveclass.ai/courses/learn-sql-relational-databases" target="_blank" class="course-link">কোর্স শুরু করুন <i class="fas fa-external-link-alt"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="step-card" data-step="4">
+        <div class="step-header" onclick="toggleStep(4)">
+            <div class="step-number" id="step-num-4">৪</div>
+            <div class="step-title-area">
+                <h2>অ্যাডভান্সড অ্যানালাইসিস ও মেশিন লার্নিং</h2>
+                <p>ডেটা থেকে ফিউচার প্রেডিকশন এবং কঠিন গাণিতিক বিশ্লেষণ</p>
+            </div>
+            <div class="step-toggle" id="toggle-4"><i class="fas fa-chevron-down"></i></div>
+        </div>
+        <div class="step-content" id="content-4">
+            <div class="course-list">
+                <div class="course-item">
+                    <div class="course-checkbox" onclick="toggleCheck(this, event)"><i class="fas fa-check" style="display:none"></i></div>
+                    <div class="course-info">
+                        <span class="platform-badge badge-kaggle"><i class="fas fa-database"></i> Kaggle</span>
+                        <h3>Advanced SQL</h3>
+                        <p>জটিল সব কুয়েরি লেখার নিয়ম — Window Functions, CTEs, Subqueries এবং Performance Optimization।</p>
+                        <a href="https://www.kaggle.com/learn/advanced-sql" target="_blank" class="course-link">কোর্স শুরু করুন <i class="fas fa-external-link-alt"></i></a>
+                    </div>
+                </div>
+                <div class="course-item">
+                    <div class="course-checkbox" onclick="toggleCheck(this, event)"><i class="fas fa-check" style="display:none"></i></div>
+                    <div class="course-info">
+                        <span class="platform-badge badge-ibm"><i class="fas fa-brain"></i> IBM Cognitive Class</span>
+                        <h3>Data Analysis with Python</h3>
+                        <p>পাইথন ব্যবহার করে প্র্যাক্টিক্যাল ডেটা অ্যানালাইসিসের আসল কাজ — EDA, Statistical Analysis।</p>
+                        <a href="https://cognitiveclass.ai/courses/data-analysis-python" target="_blank" class="course-link">কোর্স শুরু করুন <i class="fas fa-external-link-alt"></i></a>
+                    </div>
+                </div>
+                <div class="course-item">
+                    <div class="course-checkbox" onclick="toggleCheck(this, event)"><i class="fas fa-check" style="display:none"></i></div>
+                    <div class="course-info">
+                        <span class="platform-badge badge-ibm"><i class="fas fa-brain"></i> IBM Cognitive Class</span>
+                        <h3>Data Visualisation with Python</h3>
+                        <p>পাইথন লাইব্রেরি দিয়ে অ্যাডভান্সড ভিজ্যুয়ালাইজেশন তৈরি — Bokeh, Plotly, Folium।</p>
+                        <a href="https://cognitiveclass.ai/courses/data-visualization-python" target="_blank" class="course-link">কোর্স শুরু করুন <i class="fas fa-external-link-alt"></i></a>
+                    </div>
+                </div>
+                <div class="course-item">
+                    <div class="course-checkbox" onclick="toggleCheck(this, event)"><i class="fas fa-check" style="display:none"></i></div>
+                    <div class="course-info">
+                        <span class="platform-badge badge-kaggle"><i class="fas fa-database"></i> Kaggle</span>
+                        <h3>Intro to Machine Learning</h3>
+                        <p>মেশিন লার্নিংয়ের একদম শুরুটা কীভাবে হয় — Supervised vs Unsupervised Learning, Model Evaluation।</p>
+                        <a href="https://www.kaggle.com/learn/intro-to-machine-learning" target="_blank" class="course-link">কোর্স শুরু করুন <i class="fas fa-external-link-alt"></i></a>
+                    </div>
+                </div>
+                <div class="course-item">
+                    <div class="course-checkbox" onclick="toggleCheck(this, event)"><i class="fas fa-check" style="display:none"></i></div>
+                    <div class="course-info">
+                        <span class="platform-badge badge-kaggle"><i class="fas fa-database"></i> Kaggle</span>
+                        <h3>Feature Engineering</h3>
+                        <p>আপনার মডেলের কার্যকারিতা আরও বাড়ানোর ট্রিকস — Feature Selection, Encoding, Scaling।</p>
+                        <a href="https://www.kaggle.com/learn/feature-engineering" target="_blank" class="course-link">কোর্স শুরু করুন <i class="fas fa-external-link-alt"></i></a>
+                    </div>
+                </div>
+                <div class="course-item">
+                    <div class="course-checkbox" onclick="toggleCheck(this, event)"><i class="fas fa-check" style="display:none"></i></div>
+                    <div class="course-info">
+                        <span class="platform-badge badge-ibm"><i class="fas fa-brain"></i> IBM Cognitive Class</span>
+                        <h3>Machine Learning with Python</h3>
+                        <p>পাইথন কোড লিখে প্রথম মেশিন লার্নিং প্রজেক্ট তৈরি — Scikit-learn দিয়ে হাতে-কলমে শেখা।</p>
+                        <a href="https://cognitiveclass.ai/courses/machine-learning-with-python" target="_blank" class="course-link">কোর্স শুরু করুন <i class="fas fa-external-link-alt"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="step-card" data-step="5">
+        <div class="step-header" onclick="toggleStep(5)">
+            <div class="step-number" id="step-num-5">৫</div>
+            <div class="step-title-area">
+                <h2>অল্টারনেটিভ টুলস এবং স্ট্যাটিসটিক্স (MATLAB Academy)</h2>
+                <p>রিসার্চ এবং একাডেমিক সেক্টরে MATLAB-এর ব্যবহার শিখুন</p>
+            </div>
+            <div class="step-toggle" id="toggle-5"><i class="fas fa-chevron-down"></i></div>
+        </div>
+        <div class="step-content" id="content-5">
+            <div class="course-list">
+                <div class="course-item">
+                    <div class="course-checkbox" onclick="toggleCheck(this, event)"><i class="fas fa-check" style="display:none"></i></div>
+                    <div class="course-info">
+                        <span class="platform-badge badge-matlab"><i class="fas fa-cube"></i> MATLAB Academy</span>
+                        <h3>MATLAB Onramp</h3>
+                        <p>ম্যাটল্যাবের ইন্টারফেস এবং বেসিকের সাথে পরিচিত হওয়া — ভেরিয়েবল, অ্যারে, ফাংশন এবং প্লটিং।</p>
+                        <a href="https://matlabacademy.mathworks.com/details/matlab-onramp/gettingstarted" target="_blank" class="course-link">কোর্স শুরু করুন <i class="fas fa-external-link-alt"></i></a>
+                    </div>
+                </div>
+                <div class="course-item">
+                    <div class="course-checkbox" onclick="toggleCheck(this, event)"><i class="fas fa-check" style="display:none"></i></div>
+                    <div class="course-info">
+                        <span class="platform-badge badge-matlab"><i class="fas fa-cube"></i> MATLAB Academy</span>
+                        <h3>Statistics Onramp</h3>
+                        <p>ডেটা অ্যানালাইসিসের মূল ভিত্তি স্ট্যাটিসটিক্স বা পরিসংখ্যানের ধারণা — Hypothesis Testing, Regression।</p>
+                        <a href="https://matlabacademy.mathworks.com/details/statistics-onramp/statistics" target="_blank" class="course-link">কোর্স শুরু করুন <i class="fas fa-external-link-alt"></i></a>
+                    </div>
+                </div>
+                <div class="course-item">
+                    <div class="course-checkbox" onclick="toggleCheck(this, event)"><i class="fas fa-check" style="display:none"></i></div>
+                    <div class="course-info">
+                        <span class="platform-badge badge-matlab"><i class="fas fa-cube"></i> MATLAB Academy</span>
+                        <h3>Machine Learning Onramp</h3>
+                        <p>ম্যাটল্যাব ব্যবহার করে সহজে মেশিন লার্নিং মডেল তৈরি — Classification, Clustering, Regression।</p>
+                        <a href="https://matlabacademy.mathworks.com/details/machine-learning-onramp/machinelearning" target="_blank" class="course-link">কোর্স শুরু করুন <i class="fas fa-external-link-alt"></i></a>
+                    </div>
+                </div>
+                <div class="course-item">
+                    <div class="course-checkbox" onclick="toggleCheck(this, event)"><i class="fas fa-check" style="display:none"></i></div>
+                    <div class="course-info">
+                        <span class="platform-badge badge-matlab"><i class="fas fa-cube"></i> MATLAB Academy</span>
+                        <h3>Deep Learning Onramp</h3>
+                        <p>নিউরাল নেটওয়ার্ক এবং আধুনিক ডিপ লার্নিংয়ের বেসিক — CNN, RNN এবং Transfer Learning।</p>
+                        <a href="https://matlabacademy.mathworks.com/details/deep-learning-onramp/deeplearning" target="_blank" class="course-link">কোর্স শুরু করুন <i class="fas fa-external-link-alt"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="step-card" data-step="6">
+        <div class="step-header" onclick="toggleStep(6)">
+            <div class="step-number" id="step-num-6">৬</div>
+            <div class="step-title-area">
+                <h2>রিয়েল-ওয়ার্ল্ড ও বিজনেস প্রেজেন্টেশন (HP LIFE)</h2>
+                <p>কাজের ফলাফল বিজনেস ক্লায়েন্টদের সুন্দরভাবে বুঝিয়ে বলুন</p>
+            </div>
+            <div class="step-toggle" id="toggle-6"><i class="fas fa-chevron-down"></i></div>
+        </div>
+        <div class="step-content" id="content-6">
+            <div class="course-list">
+                <div class="course-item">
+                    <div class="course-checkbox" onclick="toggleCheck(this, event)"><i class="fas fa-check" style="display:none"></i></div>
+                    <div class="course-info">
+                        <span class="platform-badge badge-hp"><i class="fas fa-briefcase"></i> HP LIFE</span>
+                        <h3>Data Science and Analytics</h3>
+                        <p>বাস্তব ব্যবসায়িক সিদ্ধান্ত নিতে ডেটার ব্যবহার — কীভাবে ডেটা দিয়ে বিজনেস প্রবলেম সলভ করা যায়।</p>
+                        <a href="https://www.life-global.org/course/344-data-science-and-analytics" target="_blank" class="course-link">কোর্স শুরু করুন <i class="fas fa-external-link-alt"></i></a>
+                    </div>
+                </div>
+                <div class="course-item">
+                    <div class="course-checkbox" onclick="toggleCheck(this, event)"><i class="fas fa-check" style="display:none"></i></div>
+                    <div class="course-info">
+                        <span class="platform-badge badge-hp"><i class="fas fa-briefcase"></i> HP LIFE</span>
+                        <h3>Presenting Data</h3>
+                        <p>ডেটার রিডার-ফ্রেন্ডলি প্রেজেন্টেশন এবং স্টোরিটেলিং — কীভাবে জটিল ডেটা সহজভাবে উপস্থাপন করবেন।</p>
+                        <a href="https://www.life-global.org/course/11-presenting-data" target="_blank" class="course-link">কোর্স শুরু করুন <i class="fas fa-external-link-alt"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="advice-section">
+        <h3><i class="fas fa-lightbulb"></i> একটি ছোট্ট পরামর্শ</h3>
+        <p>শুধুমাত্র সার্টিফিকেট জমানোর উদ্দেশ্যে কোর্সগুলো করবেন না। প্রতিটি কোর্সে শেখানো প্রজেক্টগুলো নিজে নিজে একটু পরিবর্তন করে রান করার চেষ্টা করবেন। আপনার তৈরি করা সেই ছোট ছোট ফাইল বা কোডগুলো ইন্টারনেটে শেয়ার করলে সেটাই আপনার সবচেয়ে বড় সার্টিফিকেট হিসেবে কাজ করবে।</p>
+    </div>
+
+</div>
+
+<footer class="footer">
+    <p>বিজ্ঞান প্রযুক্তির তৈরি — শুভকামনা আপনাদের ডেটা অ্যানালাইসিস শেখার যাত্রায়! <span class="heart">❤</span></p>
+    <p style="margin-top:8px; font-size:0.85rem;">
+        <a href="https://github.com" target="_blank" style="color:var(--primary); text-decoration:none;">
+            <i class="fab fa-github"></i> GitHub-ে স্টার দিন
+        </a>
+    </p>
+</footer>
+
+<div class="celebration" id="celebration">
+    <div class="celebration-content">
+        <div style="font-size: 4rem; margin-bottom: 10px;">🎉</div>
+        <h2>অভিনন্দন!</h2>
+        <p>আপনি সব কোর্স সম্পন্ন করেছেন! আপনি এখন একজন ডেটা অ্যানালিস্ট হিসেবে প্রস্তুত।</p>
+        <button class="celebration-btn" onclick="closeCelebration()">ধন্যবাদ!</button>
+    </div>
+</div>
+
+<script>
+    function toggleStep(stepNum) {
+        const content = document.getElementById('content-' + stepNum);
+        const toggle = document.getElementById('toggle-' + stepNum);
+        content.classList.toggle('open');
+        toggle.classList.toggle('rotated');
+    }
+    function toggleCheck(el, event) {
+        event.stopPropagation();
+        const checkIcon = el.querySelector('i');
+        const isChecked = el.classList.toggle('checked');
+        checkIcon.style.display = isChecked ? 'block' : 'none';
+        updateProgress();
+    }
+    function updateProgress() {
+        const totalCheckboxes = document.querySelectorAll('.course-checkbox').length;
+        const checkedCheckboxes = document.querySelectorAll('.course-checkbox.checked').length;
+        const percentage = Math.round((checkedCheckboxes / totalCheckboxes) * 100);
+        document.getElementById('progress-bar').style.width = percentage + '%';
+        document.getElementById('progress-text').textContent = percentage + '% সম্পন্ন';
+        document.querySelectorAll('.step-card').forEach(card => {
+            const stepCheckboxes = card.querySelectorAll('.course-checkbox');
+            const stepChecked = card.querySelectorAll('.course-checkbox.checked');
+            const stepNum = card.getAttribute('data-step');
+            const stepNumberEl = document.getElementById('step-num-' + stepNum);
+            if (stepCheckboxes.length > 0 && stepCheckboxes.length === stepChecked.length) {
+                stepNumberEl.classList.add('completed');
+                stepNumberEl.innerHTML = '<i class="fas fa-check"></i>';
+            } else {
+                stepNumberEl.classList.remove('completed');
+                stepNumberEl.textContent = stepNum;
+            }
+        });
+        if (percentage === 100) {
+            setTimeout(() => {
+                document.getElementById('celebration').classList.add('show');
+                createConfetti();
+            }, 500);
+        }
+    }
+    function closeCelebration() {
+        document.getElementById('celebration').classList.remove('show');
+    }
+    function createConfetti() {
+        const colors = ['#1a5f7a', '#e07b39', '#22c55e', '#f59e0b', '#ec4899', '#8b5cf6'];
+        for (let i = 0; i < 100; i++) {
+            setTimeout(() => {
+                const confetti = document.createElement('div');
+                confetti.className = 'confetti';
+                confetti.style.left = Math.random() * 100 + 'vw';
+                confetti.style.background = colors[Math.floor(Math.random() * colors.length)];
+                confetti.style.animationDuration = (Math.random() * 2 + 2) + 's';
+                confetti.style.borderRadius = Math.random() > 0.5 ? '50%' : '0';
+                document.body.appendChild(confetti);
+                setTimeout(() => confetti.remove(), 4000);
+            }, i * 30);
+        }
+    }
+    function copyLink() {
+        navigator.clipboard.writeText(window.location.href).then(() => {
+            alert('লিংক কপি হয়েছে!');
+        });
+    }
+    window.onload = function() {
+        toggleStep(1);
+    };
+</script>
+
+</body>
+</html>
