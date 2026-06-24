@@ -25,15 +25,6 @@
 
 ---
 
-## 🚀 GitHub Pages-এ পাবলিশ করার নিয়ম
-
-১. GitHub-এ একটি নতুন রিপোজিটরি তৈরি করুন (যেমন: `data-science-roadmap`)
-২. এই `index.html` ফাইলটি রিপোজিটরির root-এ আপলোড করুন
-৩. **Settings → Pages → Branch: main → Save** ক্লিক করুন
-৪. কিছুক্ষণ পর আপনার সাইট লাইভ হবে: `https://yourusername.github.io/data-science-roadmap`
-
----
-
 ## 🛠️ ফিচারগুলো
 
 - ✅ **প্রোগ্রেস ট্র্যাকিং** — প্রতিটি কোর্স শেষে চেকবক্সে টিক দিন
