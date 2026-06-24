@@ -4,7 +4,7 @@
 
 একটি সম্পূর্ণ, ইন্টারঅ্যাক্টিভ ডেটা সায়েন্স এবং ডেটা অ্যানালাইসিস শেখার রোডম্যাপ। এখানে **Kaggle, IBM Cognitive Class, MATLAB Academy এবং HP LIFE**-এর ফ্রি কোর্সগুলো ধাপে ধাপে সাজানো আছে — বাংলাদেশ এবং দক্ষিণ এশিয়ার শিক্ষার্থীদের কথা মাথায় রেখে।
 
-🔗 **লাইভ দেখুন:** [GitHub Pages](https://yourusername.github.io/data-science-roadmap)
+🔗 **লাইভ দেখুন:** https://github.com/hasa-arc/data-science-roadmap.git
 
 ---
 
@@ -29,7 +29,7 @@
 
 ২. এই রিপোজিটরির সব ফাইল আপলোড করুন:
    ```bash
-   git clone https://github.com/yourusername/data-science-roadmap.git
+   git clone https://github.com/hasa-arc/data-science-roadmap.git
    cd data-science-roadmap
    # সব ফাইল কপি করুন
    git add .
@@ -41,7 +41,7 @@
    - Settings → Pages → Branch: `main` → Folder: `/ (root)` → Save
 
 ৪. কিছুক্ষণ পর আপনার সাইট লাইভ হবে:  
-   `https://yourusername.github.io/data-science-roadmap`
+   `https://github.com/hasa-arc/data-science-roadmap.git`
 
 > 💡 **টিপ:** `.github/workflows/deploy.yml` ফাইলটি আছে বলে প্রতিবার push করলেই অটোমেটিক Pages আপডেট হবে।
 
